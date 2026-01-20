@@ -102,6 +102,7 @@ class Config:
     # === 系统配置 ===
     max_workers: int = 3  # 低并发防封禁
     debug: bool = False
+    data_days: int = 60  # 历史数据天数
     
     # === 定时任务配置 ===
     schedule_enabled: bool = False            # 是否启用定时任务
@@ -216,6 +217,7 @@ class Config:
             log_level=os.getenv('LOG_LEVEL', 'INFO'),
             max_workers=int(os.getenv('MAX_WORKERS', '3')),
             debug=os.getenv('DEBUG', 'false').lower() == 'true',
+            data_days=int(os.getenv('DATA_DAYS', '60')),
             schedule_enabled=os.getenv('SCHEDULE_ENABLED', 'false').lower() == 'true',
             schedule_time=os.getenv('SCHEDULE_TIME', '18:00'),
             market_review_enabled=os.getenv('MARKET_REVIEW_ENABLED', 'true').lower() == 'true',
