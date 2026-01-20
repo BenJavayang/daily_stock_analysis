@@ -43,6 +43,10 @@ jobs:
       
       - name: 执行股票分析
         env:
+          # Reduce gRPC log noise
+          GRPC_VERBOSITY: ERROR
+          GLOG_minloglevel: 2
+
           # Gemini AI
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           GEMINI_MODEL: ${{ vars.GEMINI_MODEL || secrets.GEMINI_MODEL || 'gemini-3-flash-preview' }}
@@ -88,7 +92,7 @@ jobs:
           
           # 其他配置
           LOG_LEVEL: INFO
-          DATA_DAYS: 60
+          DATA_DAYS: 30
           MAX_CONCURRENT: 3
         run: |
           # 判断运行模式
